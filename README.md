@@ -8,3 +8,5 @@ To get up and running, follow these steps:
 3. In another terminal, go into client. and run ```npm install```.  Then run ```npm run serve``` which will start the frontend server on port 8080.
 4. Fire up http://localhost:8080
 
+
+To run frontend unit tests, go into client/ and run ```npm run test:unit```
