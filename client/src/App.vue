@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+    <Header :candidate="candidate" />
     <router-view />
     <Footer />
   </div>
@@ -8,11 +8,21 @@
 <script>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
+import { mapState, mapActions } from "vuex";
 export default {
   name: "App",
   components: {
     Header,
     Footer
+  },
+  computed: {
+    ...mapState(["candidate"])
+  },
+  created: function() {
+    this.loadCandidate();
+  },
+  methods: {
+    ...mapActions(["loadCandidate"])
   }
 };
 </script>

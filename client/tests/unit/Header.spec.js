@@ -11,4 +11,15 @@ describe("Header.vue", () => {
     });
     expect(wrapper.text()).to.include(election);
   });
+
+  it("renders props.candidate when passed", () => {
+    const candidate = {
+      displayName: "evan mcmullin"
+    };
+    const wrapper = shallowMount(Header, {
+      propsData: { candidate },
+      stubs: ["router-link"]
+    });
+    expect(wrapper.text()).to.include(candidate.displayName);
+  });
 });

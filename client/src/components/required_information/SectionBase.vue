@@ -4,7 +4,17 @@
       <div class="name">{{ name }}</div>
     </div>
     <div class="body" v-if="isExpanded">
-      <slot></slot>
+      <div class="requirements">
+        <slot name="requirements">
+        </slot>
+      </div>
+      <div class="fields">
+        <slot name="fields"></slot>
+      </div>
+      <div class="actions">
+        <slot name="actions">
+        </slot>
+      </div>
     </div>
   </div>
 </template>
@@ -17,6 +27,11 @@ export default {
     return {
       isExpanded: this.expandByDefault || false
     };
+  },
+  methods: {
+    expand() {
+      this.isExpanded = true;
+    }
   }
 };
 </script>
@@ -38,6 +53,12 @@ div.section {
   }
   div.body {
     padding: 25px 35px;
+    display: flex;
+    flex-direction: column;
+    div.actions {
+      align-self: flex-end;
+    }
   }
+  margin-bottom: 24px;
 }
 </style>

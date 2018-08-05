@@ -5,14 +5,19 @@
       <div>Candidate Form</div>
       <div>{{ election || 'Fall 2018 Special Election' }}</div>
     </div>
-    <div class="nav">
-      <router-link to="/faq">FAQ</router-link> 
-      <router-link to="/guide">VOTING GUIDE</router-link> 
-      <router-link to="/about">ABOUT</router-link> 
-      <router-link to="/contact-us">CONTACT US</router-link>
-      <div class="button">
-        EN ESPAÑOL
-      </div> 
+    <div class="container">
+      <div class="nav">
+        <router-link to="/faq">FAQ</router-link> 
+        <router-link to="/guide">VOTING GUIDE</router-link> 
+        <router-link to="/about">ABOUT</router-link> 
+        <router-link to="/contact-us">CONTACT US</router-link>
+        <div class="button">
+          EN ESPAÑOL
+        </div> 
+      </div>
+      <div class="candidate" v-if="candidate">
+        {{ candidate.displayName }}
+      </div>
     </div>
   </div>
 </template>
@@ -20,7 +25,7 @@
 <script>
 export default {
   name: "Header",
-  props: ["election"]
+  props: ["election", "candidate"]
 };
 </script>
 
@@ -49,6 +54,7 @@ div.header {
     justify-content: flex-end;
     align-items: center;
     flex: 1 0 auto;
+    margin-bottom: 20px;
     a {
       text-decoration: none;
       color: #333d44;
@@ -69,6 +75,20 @@ div.header {
       padding: 13px 20px;
       box-sizing: border-box;
     }
+  }
+  div.candidate {
+    opacity: 0.8;
+    color: #333333;
+    font-family: Arial;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+  div.container {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 }
 </style>

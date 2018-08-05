@@ -1,17 +1,21 @@
 <template>
   <div>
-    <RequiredInformationForm />
+    <RequiredInformation :candidate="candidate" v-if="candidate" />
+    <div v-else>Please wait..</div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import RequiredInformationForm from "@/components/RequiredInformationForm.vue";
-
+import RequiredInformation from "@/components/RequiredInformation.vue";
+import { mapState } from "vuex";
 export default {
   name: "home",
   components: {
-    RequiredInformationForm
+    RequiredInformation
+  },
+  computed: {
+    ...mapState(["candidate"])
   }
 };
 </script>
